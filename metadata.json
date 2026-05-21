@@ -1,0 +1,6 @@
+{
+  "name": "Google Maps Lead Extractor Extension Studio",
+  "description": "Visualize, test, and package a high-performance Chrome Extension for extracting Google Maps leads. Features proxy rotation configurations, customized formatting, pagination speed controls, and Gemini-based lead enrichment and cold email drafting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

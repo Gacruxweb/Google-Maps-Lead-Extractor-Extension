@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MapExtract Expert</title>
+  <style>
+    body {
+      width: 420px;
+      margin: 0;
+      padding: 16px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0F172A;
+      color: #CBD5E1;
+      font-size: 13px;
+    }
+    h1 {
+      font-size: 16px;
+      margin-top: 0;
+      color: #F8FAFC;
+      border-bottom: 1px solid #1E293B;
+      padding-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge {
+      background-color: #4F46E5;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .card {
+      background-color: #1E293B;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 12px;
+      border: 1px solid #334155;
+    }
+    .label {
+      font-size: 11px;
+      color: #818CF8;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 4px;
+      display: block;
+    }
+    textarea, select, input {
+      width: 100%;
+      background-color: #0F172A;
+      border: 1px solid #334155;
+      padding: 6px;
+      border-radius: 4px;
+      color: #F8FAFC;
+      box-sizing: border-box;
+      font-family: monospace;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .btn {
+      background-color: #4F46E5;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+    .btn:hover {
+      background-color: #4338CA;
+    }
+    .btn-secondary {
+      background-color: #475569;
+    }
+    .btn-secondary:hover {
+      background-color: #334155;
+    }
+    .row {
+      display: flex;
+      gap: 8px;
+    }
+    .flex-1 { flex: 1; }
+    .metrics {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .metric-value {
+      font-size: 18px;
+      font-weight: bold;
+      color: #10B981;
+    }
+    .log-box {
+      height: 100px;
+      overflow-y: scroll;
+      background-color: #020617;
+      border: 1px solid #334155;
+      font-family: monospace;
+      font-size: 10px;
+      padding: 8px;
+      color: #94A3B8;
+    }
+    .log-success { color: #34D399; }
+    .log-warn { color: #FBBF24; }
+    .log-error { color: #F87171; }
+  </style>
+</head>
+<body>
+  <h1>MapExtract Expert <span class="badge">V4.2</span></h1>
+  
+  <div class="metrics">
+    <div class="card">
+      <div class="label">Leads Scraped</div>
+      <div id="metric-scraped" class="metric-value">0</div>
+    </div>
+    <div class="card">
+      <div class="label">Active Proxy</div>
+      <div id="metric-proxy" class="metric-value" style="font-size:11px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; color:#FBBF24;">Direct</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <label class="label">Queries to Scrape (One per line)</label>
+    <textarea id="queries-input" rows="3" placeholder="Coffee shop near Paris
+Dentist Munich">Coffee shop London
+Bakery Paris
+Dentist Berlin</textarea>
+    
+    <div class="row">
+      <div class="flex-1">
+        <label class="label">Delay (min - max s)</label>
+        <div class="row">
+          <input type="number" id="min-delay" value="2" style="margin-bottom:0;">
+          <input type="number" id="max-delay" value="5" style="margin-bottom:0;">
+        </div>
+      </div>
+      <div class="flex-1">
+        <label class="label">Limit (results/query)</label>
+        <input type="number" id="limit" value="40" style="margin-bottom:0;">
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom:12px;">
+    <button id="btn-start" class="btn flex-1">Start Scraper</button>
+    <button id="btn-stop" class="btn btn-secondary flex-1">Stop</button>
+    <button id="btn-export" class="btn btn-secondary" style="background-color:#059669;">CSV</button>
+  </div>
+
+  <div class="card">
+    <div class="label">System Console Logs</div>
+    <div id="console-logs" class="log-box">
+      <div>[system] Welcome to MapExtract Chrome Extension.</div>
+      <div>[system] Extracting in: "en" / "US"</div>
+    </div>
+  </div>
+
+  <div style="font-size:10px; color:#64748B; text-align:center; margin-top:8px;">
+    Autoupdate verification endpoint configured: Active
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
