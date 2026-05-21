@@ -173,4 +173,4 @@ npm run build # Confirms server side builds compile cleanly
 ---
 
 ## 📝 License
-Distributed under the MIT License. See `LICENSE` for more information.
+Open to use.
